@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
+from .models import *
 
 
 def index_func(request):
-    return render(request, 'users/index.html')
+    details = Details.objects.all()
+    context ={"details" : details,}
+    return render(request, 'users/index.html',context)
 
 
 def register_func(request):
@@ -18,3 +21,10 @@ def register_func(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
+
+
+def details(request):
+
+    return render(request,'users/details.html')
+

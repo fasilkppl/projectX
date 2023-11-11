@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Gotto Job Details</title>
+        <title>Barbers-details</title>
 
          <!-- CSS FILES -->
          <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
 
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'home_pg' %}">
                     <img src="{% static 'assets/images/logo.png' %}" class="img-fluid logo-image">
 
                     <div class="d-flex flex-column">
@@ -58,7 +58,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-center ms-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Homepage</a>
+                            <a class="nav-link" href="{% url 'home_pg' %}">Homepage</a>
                         </li>
 
                         <li class="nav-item">
@@ -71,7 +71,7 @@
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="job-listings.html">Job Listings</a></li>
 
-                                <li><a class="dropdown-item active" href="job-details.html">Job Details</a></li>
+                                <li><a class="dropdown-item active" href="{% url 'details_pg' %}">Job Details</a></li>
                             </ul>
                         </li>
 
@@ -100,11 +100,11 @@
                     <div class="row">
                         
                         <div class="col-lg-12 col-12 text-center">
-                            <h1 class="text-white">Job Details</h1>
+                            <h1 class="text-white">Barber's Info</h1>
 
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{% url 'home_pg' %}">Home</a></li>
 
                                     <li class="breadcrumb-item active" aria-current="page">Job Details</li>
                                 </ol>
@@ -257,7 +257,7 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/it-professional-works-startup-project.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -274,7 +274,7 @@
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Technical Lead</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">Technical Lead</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -309,7 +309,7 @@
                                             $50k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -318,7 +318,7 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/marketing-assistant.jpg' %}" class="job-image img-fluid" alt="marketing assistant">
                                     </a>
 
@@ -335,7 +335,7 @@
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Marketing Assistant</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">Marketing Assistant</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -370,7 +370,7 @@
                                             $20k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -379,7 +379,7 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/coding-man.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -396,7 +396,7 @@
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Programmer</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">Programmer</a>
                                     </h4>
                                         
                                     <div class="d-flex align-items-center">
@@ -431,7 +431,7 @@
                                             $68k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>

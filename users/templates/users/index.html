@@ -41,7 +41,7 @@ Bootstrap 5 HTML CSS Template
 
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'home_pg' %}">
                     <img src="{% static 'assets/images/logo.png' %}" class="img-fluid logo-image">
 
                     <div class="d-flex flex-column">
@@ -57,7 +57,7 @@ Bootstrap 5 HTML CSS Template
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-center ms-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Homepage</a>
+                            <a class="nav-link active" href="{% url 'home_pg' %}">Homepage</a>
                         </li>
 
                         <li class="nav-item">
@@ -70,7 +70,7 @@ Bootstrap 5 HTML CSS Template
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="job-listings.html">Job Listings</a></li>
 
-                                <li><a class="dropdown-item" href="job-details.html">Job Details</a></li>
+                                <li><a class="dropdown-item" href="{% url 'details_pg' %}">Barbers</a></li>
                             </ul>
                         </li>
 
@@ -304,230 +304,82 @@ Bootstrap 5 HTML CSS Template
                         </div>
 
                         <div class="col-lg-12 col-12">
+
+
+
+
+
+
+
+
+
+
+                            
+
+                        {% for detail in details %}
                             <div class="job-thumb d-flex">
                                 <div class="job-image-wrap bg-white shadow-lg">
-                                    <img src="{% static 'assets/images/logos/google.png' %}" class="job-image img-fluid" alt="">
+                                    <img src="{{detail.imageURL}}" class="job-image img-fluid" alt="">
                                 </div>
 
                                 <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
                                     <div class="mb-3">
                                         <h4 class="job-title mb-lg-0">
-                                            <a href="job-details.html" class="job-title-link">Technical Lead</a>
+                                            <a href="{% url 'details_pg' %}" class="job-title-link">{{detail.name}}</a>
                                         </h4>
 
                                         <div class="d-flex flex-wrap align-items-center">
                                             <p class="job-location mb-0">
                                                 <i class="custom-icon bi-geo-alt me-1"></i>
-                                                Kuala, Malaysia
+                                                {{detail.location}}
                                             </p>
 
                                             <p class="job-date mb-0">
                                                 <i class="custom-icon bi-clock me-1"></i>
-                                                10 hours ago
+                                                {{detail.date_posted}}
                                             </p>
 
                                             <p class="job-price mb-0">
                                                 <i class="custom-icon bi-cash me-1"></i>
-                                                $20k
+                                                {{detail.price}}
                                             </p>
 
                                             <div class="d-flex">
                                                 <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge badge-level">Internship</a>
+                                                    {% if detail.availability %}
+                                                        <a href="job-listings.html" class="badge badge-level">Available Now</a>
+                                                    {% else %}
+                                                        <a href="job-listings.html" class="badge badge-level">Busy</a>
+                                                    {% endif %}
                                                 </p>
-
+                                            
                                                 <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge">Freelance</a>
+                                                    <a href="job-listings.html" class="badge">Book Now</a>
                                                 </p>
                                             </div>
+                                            
                                         </div>
                                     </div>
 
                                     <div class="job-section-btn-wrap">
-                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn">Apply now</a>
                                     </div>
                                 </div>
                             </div>
+                        {% endfor %}
 
-                            <div class="job-thumb d-flex">
-                                <div class="job-image-wrap bg-white shadow-lg">
-                                    <img src="{% static 'assets/images/logos/apple.png' %}" class="job-image img-fluid" alt="">
-                                </div>
 
-                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
-                                    <div class="mb-3">
-                                        <h4 class="job-title mb-lg-0">
-                                            <a href="job-details.html" class="job-title-link">Business Director</a>
-                                        </h4>
 
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <p class="job-location mb-0">
-                                                <i class="custom-icon bi-geo-alt me-1"></i>
-                                                California, USA
-                                            </p>
 
-                                            <p class="job-date mb-0">
-                                                <i class="custom-icon bi-clock me-1"></i>
-                                                1 day ago
-                                            </p>
 
-                                            <p class="job-price mb-0">
-                                                <i class="custom-icon bi-cash me-1"></i>
-                                                $90k
-                                            </p>
 
-                                            <div class="d-flex">
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge badge-level">Senior</a href="job-listings.html">
-                                                </p>
 
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge">Full Time</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="job-section-btn-wrap">
-                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="job-thumb d-flex">
-                                <div class="job-image-wrap bg-white shadow-lg">
-                                    <img src="{% static 'assets/images/logos/meta.png' %}" class="job-image img-fluid" alt="">
-                                </div>
 
-                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
-                                    <div class="mb-3">
-                                        <h4 class="job-title mb-lg-0">
-                                            <a href="job-details.html" class="job-title-link">HR Manager</a>
-                                        </h4>
 
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <p class="job-location mb-0">
-                                                <i class="custom-icon bi-geo-alt me-1"></i>
-                                                Tower, Paris
-                                            </p>
 
-                                            <p class="job-date mb-0">
-                                                <i class="custom-icon bi-clock me-1"></i>
-                                                22 hours ago
-                                            </p>
 
-                                            <p class="job-price mb-0">
-                                                <i class="custom-icon bi-cash me-1"></i>
-                                                $50k
-                                            </p>
-
-                                            <div class="d-flex">
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge badge-level">Junior</a>
-                                                </p>
-
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge">Contract</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="job-section-btn-wrap">
-                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="job-thumb d-flex">
-                                <div class="job-image-wrap bg-white shadow-lg">
-                                    <img src="{% static 'assets/images/logos/slack.png' %}" class="job-image img-fluid" alt="">
-                                </div>
-
-                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
-                                    <div class="mb-3">
-                                        <h4 class="job-title mb-lg-0">
-                                            <a href="job-details.html" class="job-title-link">Dev Ops</a>
-                                        </h4>
-
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <p class="job-location mb-0">
-                                                <i class="custom-icon bi-geo-alt me-1"></i>
-                                                Bangkok, Thailand
-                                            </p>
-
-                                            <p class="job-date mb-0">
-                                                <i class="custom-icon bi-clock me-1"></i>
-                                                40 minutes ago
-                                            </p>
-
-                                            <p class="job-price mb-0">
-                                                <i class="custom-icon bi-cash me-1"></i>
-                                                $75k - 80k
-                                            </p>
-
-                                            <div class="d-flex">
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge badge-level">Senior</a>
-                                                </p>
-
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge">Part Time</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="job-section-btn-wrap">
-                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="job-thumb d-flex">
-                                <div class="job-image-wrap bg-white shadow-lg">
-                                    <img src="{% static 'assets/images/logos/creative-market.png' %}" class="job-image img-fluid" alt="">
-                                </div>
-
-                                <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
-                                    <div class="mb-3">
-                                        <h4 class="job-title mb-lg-0">
-                                            <a href="job-details.html" class="job-title-link">UX Designer</a>
-                                        </h4>
-
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <p class="job-location mb-0">
-                                                <i class="custom-icon bi-geo-alt me-1"></i>
-                                                Bangkok, Thailand
-                                            </p>
-
-                                            <p class="job-date mb-0">
-                                                <i class="custom-icon bi-clock me-1"></i>
-                                                2 hours ago
-                                            </p>
-
-                                            <p class="job-price mb-0">
-                                                <i class="custom-icon bi-cash me-1"></i>
-                                                $100k
-                                            </p>
-
-                                            <div class="d-flex">
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge badge-level">Entry</a>
-                                                </p>
-
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge">Remote</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="job-section-btn-wrap">
-                                        <a href="job-details.html" class="custom-btn btn">Apply now</a>
-                                    </div>
-                                </div>
-                            </div>
 
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center mt-5">
@@ -633,7 +485,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/it-professional-works-startup-project.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -650,7 +502,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Technical Lead</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">Technical Lead</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -685,7 +537,7 @@ Bootstrap 5 HTML CSS Template
                                             $50k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -694,7 +546,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/marketing-assistant.jpg' %}" class="job-image img-fluid" alt="marketing assistant">
                                     </a>
 
@@ -711,7 +563,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Marketing Assistant</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">Marketing Assistant</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -746,7 +598,7 @@ Bootstrap 5 HTML CSS Template
                                             $20k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -755,7 +607,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/coding-man.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -772,7 +624,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Programmer</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">Programmer</a>
                                     </h4>
                                         
                                     <div class="d-flex align-items-center">
@@ -807,7 +659,7 @@ Bootstrap 5 HTML CSS Template
                                             $68k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -816,7 +668,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/pretty-blogger-posing-cozy-apartment.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -833,7 +685,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">HR Manager</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">HR Manager</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -868,7 +720,7 @@ Bootstrap 5 HTML CSS Template
                                             $35k - 45k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -877,7 +729,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/paper-analysis.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -894,7 +746,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Sales Representative</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">Sales Representative</a>
                                     </h4>
                                         
                                     <div class="d-flex align-items-center">
@@ -929,7 +781,7 @@ Bootstrap 5 HTML CSS Template
                                             $20k - 35k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -938,7 +790,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="job-details.html">
+                                    <a href="{% url 'details_pg' %}">
                                         <img src="{% static 'assets/images/jobs/logo-designer-working-computer-desktop.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -955,7 +807,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="job-details.html" class="job-title-link">Graphic Designer</a>
+                                        <a href="{% url 'details_pg' %}" class="job-title-link">Graphic Designer</a>
                                     </h4>
                                         
                                     <div class="d-flex align-items-center">
@@ -990,7 +842,7 @@ Bootstrap 5 HTML CSS Template
                                             $20k
                                         </p>
 
-                                        <a href="job-details.html" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
