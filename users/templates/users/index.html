@@ -70,7 +70,7 @@ Bootstrap 5 HTML CSS Template
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="job-listings.html">Job Listings</a></li>
 
-                                <li><a class="dropdown-item" href="{% url 'details_pg' %}">Barbers</a></li>
+                                <li><a class="dropdown-item" href=#>Barbers</a></li>
                             </ul>
                         </li>
 
@@ -325,7 +325,7 @@ Bootstrap 5 HTML CSS Template
                                 <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
                                     <div class="mb-3">
                                         <h4 class="job-title mb-lg-0">
-                                            <a href="{% url 'details_pg' %}" class="job-title-link">{{detail.name}}</a>
+                                            <a href="{% url 'details_pg' pk=detail.pk %}" class="job-title-link">{{detail.name}}</a>
                                         </h4>
 
                                         <div class="d-flex flex-wrap align-items-center">
@@ -348,21 +348,21 @@ Bootstrap 5 HTML CSS Template
                                                 <p class="mb-0">
                                                     {% if detail.availability %}
                                                         <a href="job-listings.html" class="badge badge-level">Available Now</a>
+                                                        <a href="job-listings.html" class="badge">Book Now</a>
+                                                        
                                                     {% else %}
                                                         <a href="job-listings.html" class="badge badge-level">Busy</a>
                                                     {% endif %}
                                                 </p>
                                             
-                                                <p class="mb-0">
-                                                    <a href="job-listings.html" class="badge">Book Now</a>
-                                                </p>
+                                                
                                             </div>
                                             
                                         </div>
                                     </div>
 
                                     <div class="job-section-btn-wrap">
-                                        <a href="{% url 'details_pg' %}" class="custom-btn btn">Apply now</a>
+                                        <a href="{% url 'details_pg' pk=detail.pk %}" class="custom-btn btn">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -485,7 +485,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="{% url 'details_pg' %}">
+                                    <a href=#>
                                         <img src="{% static 'assets/images/jobs/it-professional-works-startup-project.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -502,7 +502,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="{% url 'details_pg' %}" class="job-title-link">Technical Lead</a>
+                                        <a href=# class="job-title-link">Technical Lead</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -537,7 +537,7 @@ Bootstrap 5 HTML CSS Template
                                             $50k
                                         </p>
 
-                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href=# class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -546,7 +546,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="{% url 'details_pg' %}">
+                                    <a href=#>
                                         <img src="{% static 'assets/images/jobs/marketing-assistant.jpg' %}" class="job-image img-fluid" alt="marketing assistant">
                                     </a>
 
@@ -563,7 +563,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="{% url 'details_pg' %}" class="job-title-link">Marketing Assistant</a>
+                                        <a href=# class="job-title-link">Marketing Assistant</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -598,7 +598,7 @@ Bootstrap 5 HTML CSS Template
                                             $20k
                                         </p>
 
-                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href=# class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -607,7 +607,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="{% url 'details_pg' %}">
+                                    <a href=#>
                                         <img src="{% static 'assets/images/jobs/coding-man.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -624,7 +624,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="{% url 'details_pg' %}" class="job-title-link">Programmer</a>
+                                        <a href=# class="job-title-link">Programmer</a>
                                     </h4>
                                         
                                     <div class="d-flex align-items-center">
@@ -659,7 +659,7 @@ Bootstrap 5 HTML CSS Template
                                             $68k
                                         </p>
 
-                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href=# class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -668,7 +668,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="{% url 'details_pg' %}">
+                                    <a href=#>
                                         <img src="{% static 'assets/images/jobs/pretty-blogger-posing-cozy-apartment.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -685,7 +685,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="{% url 'details_pg' %}" class="job-title-link">HR Manager</a>
+                                        <a href=# class="job-title-link">HR Manager</a>
                                     </h4>
 
                                     <div class="d-flex align-items-center">
@@ -720,7 +720,7 @@ Bootstrap 5 HTML CSS Template
                                             $35k - 45k
                                         </p>
 
-                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href=# class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -729,7 +729,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="{% url 'details_pg' %}">
+                                    <a href=#>
                                         <img src="{% static 'assets/images/jobs/paper-analysis.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -746,7 +746,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="{% url 'details_pg' %}" class="job-title-link">Sales Representative</a>
+                                        <a href=# class="job-title-link">Sales Representative</a>
                                     </h4>
                                         
                                     <div class="d-flex align-items-center">
@@ -781,7 +781,7 @@ Bootstrap 5 HTML CSS Template
                                             $20k - 35k
                                         </p>
 
-                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href=# class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>
@@ -790,7 +790,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="job-thumb job-thumb-box">
                                 <div class="job-image-box-wrap">
-                                    <a href="{% url 'details_pg' %}">
+                                    <a href=#>
                                         <img src="{% static 'assets/images/jobs/logo-designer-working-computer-desktop.jpg' %}" class="job-image img-fluid" alt="">
                                     </a>
 
@@ -807,7 +807,7 @@ Bootstrap 5 HTML CSS Template
 
                                 <div class="job-body">
                                     <h4 class="job-title">
-                                        <a href="{% url 'details_pg' %}" class="job-title-link">Graphic Designer</a>
+                                        <a href=# class="job-title-link">Graphic Designer</a>
                                     </h4>
                                         
                                     <div class="d-flex align-items-center">
@@ -842,7 +842,7 @@ Bootstrap 5 HTML CSS Template
                                             $20k
                                         </p>
 
-                                        <a href="{% url 'details_pg' %}" class="custom-btn btn ms-auto">Apply now</a>
+                                        <a href=# class="custom-btn btn ms-auto">Apply now</a>
                                     </div>
                                 </div>
                             </div>

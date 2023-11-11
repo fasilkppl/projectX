@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import UserRegisterForm
 from .models import *
 
 
 def index_func(request):
+
     details = Details.objects.all()
-    context ={"details" : details,}
+    context ={"details" : details}
     return render(request, 'users/index.html',context)
 
 
@@ -24,7 +25,8 @@ def register_func(request):
 
 
 
-def details(request):
-
-    return render(request,'users/details.html')
+def details(request, pk):
+    detail = get_object_or_404(Details, pk=pk)
+    context ={"detail" : detail}
+    return render(request,'users/details.html',context)
 
