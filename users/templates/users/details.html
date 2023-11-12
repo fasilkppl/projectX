@@ -159,7 +159,7 @@
                                         <p class="mb-0">
                                             {% if detail.availability %}
                                                 <a href="job-listings.html" class="badge badge-level">Available Now</a>
-                                                <a href="job-listings.html" class="badge">Book Now</a>
+                                                <a href="{% url 'payment_pg'  %}" class="badge">Book Now</a>
                                             {% else %}
                                                 <a href="job-listings.html" class="badge badge-level">Busy</a>
                                             {% endif %}
@@ -211,9 +211,9 @@
                             <div class="job-thumb job-thumb-detail-box bg-white shadow-lg">
                                 <div class="d-flex align-items-center">
                                     <div class="job-image-wrap d-flex align-items-center bg-white shadow-lg mb-3">
-                                        <img src="{% static 'assets/images/logos/google.png' %}" class="job-image me-3 img-fluid" alt="">
+                                        <img src="{{detail.imageURL}}" class="job-image me-3 img-fluid" alt="">
 
-                                        <p class="mb-0">Google</p>
+                                        <p class="mb-0">{{detail.name}}</p>
                                     </div>
 
                                     <a href="#" class="bi-bookmark ms-auto me-2"></a>
