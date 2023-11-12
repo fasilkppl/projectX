@@ -133,8 +133,6 @@ Bootstrap 5 HTML CSS Template
 
             
             <section class="section-padding pb-0 d-flex justify-content-center align-items-center">
-                
-                   
                 <div class="container">
                     <div class="row">
 
@@ -143,63 +141,55 @@ Bootstrap 5 HTML CSS Template
                                 {% csrf_token %}
                                 <h3 class="text-white mb-3">User Registration</h3>
                             
-                                <!-- Username -->
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
+                                <!-- Username and Email side by side -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-person custom-icon"></i></span>
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
                             
-                                    {{ form.username }}
+                                    <div class="col-md-6 mb-3">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-envelope custom-icon"></i></span>
+                                            {{ form.email }}
+                                        </div>
+                                    </div>
                                 </div>
                             
-                                <!-- Email -->
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-envelope custom-icon"></i></span>
-                                
-                                    {{ form.email }}
-                                </div>
+                                <!-- Password1 and Password2 side by side -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-lock custom-icon"></i></span>
+                                            {{ form.password1 }}
+                                        </div>
+                                    </div>
                             
-                                <!-- Password1 -->
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-lock custom-icon"></i></span>
-                                 
-                                    {{ form.password1 }}
+                                    <div class="col-md-6 mb-3">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><i class="bi-lock custom-icon"></i></span>
+                                            {{ form.password2 }}
+                                        </div>
+                                    </div>
                                 </div>
-                            
-                                <!-- Password2 -->
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi-lock custom-icon"></i></span>
-                                 
-                                    {{ form.password2 }}
-                                </div>
-                            
                                 <button type="submit" class="form-control">Register</button>
-
-
-
-                                
                                 <div class="col-12">
                                     <div class="d-flex flex-wrap align-items-center mt-4 mt-lg-0">
                                         <span class="text-white mb-lg-0 mb-md-0 me-2">Popular keywords:</span>
-                        
                                         <div>
                                             <a href="{% url 'register_pg' %}" class="badge">Web design</a>
-                        
                                             <a href="{% url 'register_pg' %}" class="badge">Marketing</a>
-                        
                                             <a href="{% url 'register_pg' %}" class="badge">Customer support</a>
                                         </div>
                                     </div>
                                 </div>
                             </form>
-
-
-
-                            
                         </div>
-
                         <div class="col-lg-6 col-12">
                             <img src="{% static 'assets/images/4557388.png' %}" class="hero-image img-fluid" alt="">
                         </div>
-
                     </div>
                 </div>
            
