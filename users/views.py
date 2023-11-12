@@ -30,3 +30,7 @@ def details(request, pk):
     context ={"detail" : detail}
     return render(request,'users/details.html',context)
 
+
+def payment(request):
+    return render(request,'users/payment.html')
+

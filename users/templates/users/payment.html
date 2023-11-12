@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'assets/css/payment.css' %}">
+
+<!-- Include the Google Pay API library -->
+<script src="https://pay.google.com/gp/p/js/pay.js" async></script>
+
+<body>
+<div class="container">
+    <div class="outer-card">
+        <div class="card">
+            <div class="form">
+                <div class="left-side">
+                    <div class="heading">
+                        <p>GET IN YOUR ZONE.AND STAY THERE.</p>
+                        <h2>Get Brain.fm PRO for</h2>
+                        <div class="dollar">
+                            <h4>$0 today</h4>
+                            <p>with a 14-day free trial.</p>
+                        </div>
+                    </div>
+                    <div class="features">
+                        <div><span><i class="fa fa-check"></i></span></div>
+                        <div class="below-text">
+                            <h4>Unlimited Sessions</h4>
+                            <p>Access to 1000+ tracks accross a wide variety of music genres and nature soundscapes,all specially designed to help you focus,sleep,relax and mediate.</p>
+                        </div>
+                    </div>
+                    <div class="features">
+                        <div><span><i class="fa fa-check"></i></span></div>
+                        <div class="below-text">
+                            <h4>Access all Categories</h4>
+                            <p>Discover the perfect music for your brain by personalizing science-based features like neutral effect and musical complexity.</p>
+                        </div>
+                    </div>
+                    <div class="features">
+                        <div><span><i class="fa fa-check"></i></span></div>
+                        <div class="below-text">
+                            <h4>Offline Access</h4>
+                            <p>Favourates and Downloads give easy access to the tracks that work best for you.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-side">
+                        <div class="outer_slider"> 
+                           <small class="slider_button active">Monthly</small>
+                           <div class="slider">
+                              <span>Yearly</span> 
+                              <span>Monthly</span> 
+                           
+                           </div> 
+                        </div> 
+                 
+                    <div class="bill-price">
+                        <h3>$49/month</h3>
+                        <p>$49 billed annually after 14-day free trial.</p>
+                        <h5>Cancel anytime</h5>
+                    </div>
+                    
+
+
+
+                    <div class="pay" id="google-pay-button">
+                        <button onclick="redirectToGooglePay()">
+                            <i class="fa fa-google"></i> Pay
+                        </button>
+                    </div>
+
+
+
+                    <hr>
+                    <div class="or-pay"> 
+                        <p>Or pay with card</p>
+                    </div>
+                    <div class="card-details">
+                         <i class="fa fa-credit-card"></i>
+                         <input type="text" placeholder="0000 0000 0000 0000" data-slots="0" data-accept="\d" size="19">
+                        <div class="date-cvv"> 
+                        <input type="text" placeholder="MM/YYYY" data-slots="MMYYYY" size="7"> 
+                        <input type="text" placeholder="000" data-slots="0" data-accept="\d" size="3">
+                    </div>
+                    </div>
+                    <div class="purchase"> <button>Purchase Yearly</button> </div>
+                </div>
+            </div>
+        </div>
+        <div class="terms">
+            <h4>Terms of Service</h4>
+            <p>Annual subscription are backed by our 60 day money back gaurntee.Applicable VAT,sales <br> or other taxes may apply.You may cancel any subscripion at any time.To cancel,<br>go to your Account Overview and click on the membership button.</p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function redirectToGooglePay() {
+        // Replace 'your-merchant-id' with your actual Google Pay Merchant ID
+        const merchantId = 'your-merchant-id';
+
+        // Replace '100.00' with the desired amount
+        const amount = '100.00';
+
+        // Construct the Google Pay URL with the predefined amount
+        const googlePayUrl = `https://pay.google.com/gp/v/pubtrans?amount=${amount}&merchantid=${merchantId}`;
+
+        // Redirect the user to the Google Pay URL
+        window.location.href = googlePayUrl;
+    }
+</script>
+
+
+
+
+
+
+<script  src="{% static 'assets/js/payment.js' %}"></script>
+
+
+</body>
+
+</html>
