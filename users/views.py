@@ -69,3 +69,5 @@ def details(request, pk):
 def payment(request):
     return render(request,'users/payment.html')
 
+
+
