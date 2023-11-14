@@ -326,7 +326,7 @@ Bootstrap 5 HTML CSS Template
                                 <div class="job-body d-flex flex-wrap flex-auto align-items-center ms-4">
                                     <div class="mb-3">
                                         <h4 class="job-title mb-lg-0">
-                                            <a href="{% url 'details_pg' pk=detail.pk %}" class="job-title-link">{{detail.name}}</a>
+                                            <a href="{% url 'details' pk=detail.pk %}" class="job-title-link">{{detail.name}}</a>
                                         </h4>
 
                                         <div class="d-flex flex-wrap align-items-center">
@@ -363,7 +363,7 @@ Bootstrap 5 HTML CSS Template
                                     </div>
 
                                     <div class="job-section-btn-wrap">
-                                        <a href="{% url 'details_pg' pk=detail.pk %}" class="custom-btn btn">View Details</a>
+                                        <a href="{% url 'details' pk=detail.pk %}" class="custom-btn btn">View Details</a>
                                     </div>
                                 </div>
                             </div>

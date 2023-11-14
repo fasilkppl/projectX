@@ -79,13 +79,19 @@
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
 
-                        <li class="nav-item ms-lg-auto">
-                            <a class="nav-link" href="#">Register</a>
-                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item ms-lg-auto">
+                                <a class="nav-link custom-btn btn" href="{% url 'logout_pg' %}">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item ms-lg-auto">
+                                <a class="nav-link" href="{% url 'register_pg' %}">Register</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link custom-btn btn" href="#">Login</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link custom-btn btn" href="{% url 'login_pg' %}">Login</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -155,17 +161,28 @@
                                         {{detail.price}}
                                     </p>
 
-                                    <div class="d-flex">
-                                        <p class="mb-0">
-                                            {% if detail.availability %}
-                                                <a href="job-listings.html" class="badge badge-level">Available Now</a>
-                                                <a href="{% url 'payment_pg'  %}" class="badge">Book Now</a>
-                                            {% else %}
-                                                <a href="job-listings.html" class="badge badge-level">Busy</a>
-                                            {% endif %}
-                                        </p>
 
-                                    </div>
+
+                                <!-- Follower count -->
+                               <div class="d-flex">
+                                <p class="mb-0">
+                                    {% if user.is_authenticated %}
+                                        {% if user in detail.followers.all %}
+                                            <a href="#" id="follow-btn" data-barber-id="{{ detail.id }}" class="badge badge-level" >Unfollow</a>
+                                        {% else %}
+                                            <a href="#" id="follow-btn" data-barber-id="{{ detail.id }}" class="badge badge-level">Follow</a>
+                                        {% endif %}
+                                    {% else %}
+                                        <a href="{% url 'login_pg' %}" class="badge badge-level" style="margin-left: -60px;">Login To Follow</a>
+                                    {% endif %}
+                                    <a href="#" class="badge badge-level">Available Now</a>
+                                    <span class="badge badge-level" id="followers-count" style="position: absolute; bottom: 2; left: 2;">{{ current_follower_count }}</span>
+                                </p>
+                            </div>
+
+
+
+
                                 </div>
 
                                 <h4 class="mt-4 mb-2">Description</h4>
@@ -190,7 +207,11 @@
                                 </ul>
 
                                 <div class="d-flex justify-content-center flex-wrap mt-5 border-top pt-4">
-                                    <a href="#" class="custom-btn btn mt-2">Apply now</a>
+                                    {% if detail.availability %}
+                                        <a href="{% url 'payment_pg'  %}" class="custom-btn btn mt-2">Book Now</a>
+                                    {% else %}
+                                        <a href="#" class="custom-btn btn mt-2">Busy</a>
+                                    {% endif %}
 
                                     <a href="#" class="custom-btn custom-border-btn btn mt-2 ms-lg-4 ms-3">Save this job</a>
 
@@ -635,8 +656,40 @@
             </div>
         </footer>
 
+        
+        <!-- Follower-count js code -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Get CSRF token from cookie
+                const csrfToken = document.cookie.match(/csrftoken=([\w-]+)/)[1];
+        
+                $("#follow-btn").on("click", function () {
+                    const barberId = $(this).data("barber-id");
+        
+                    $.ajax({
+                        url: "{% url 'follow_barber' pk=detail.pk %}",
+                        method: "POST",
+                        headers: { "X-CSRFToken": csrfToken },
+                        data: { barber_id: barberId },
+                        success: function (data) {
+                            if (data.success) {
+                                $("#follow-btn").text(data.is_following ? "Unfollow" : "Follow");
+                                $("#followers-count").text(data.followers_count);
+                            } else {
+                                alert("Error: " + data.error);
+                            }
+                        },
+                        error: function () {
+                            alert("Error: Unable to process the request.");
+                        }
+                    });
+                });
+            });
+        </script>
+        
         <!-- JAVASCRIPT FILES -->
-
         <script  src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
         <script  src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
         <script  src="{% static 'vendor/bootstrap/js/owl.carousel.min.js' %}"></script>

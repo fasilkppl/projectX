@@ -29,8 +29,9 @@ urlpatterns = [
     path('register/', user_views.register_func, name='register_pg'),
     path('login/', user_views.login_view, name='login_pg'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout_pg'),
-    path('details/<int:pk>/', user_views.details, name='details_pg'),
+    path('details/<int:pk>/', user_views.details, name='details'),
     path('payment/', user_views.payment, name='payment_pg'),
+    path('follow/<int:pk>/', user_views.follow_barber, name='follow_barber'),
 
 
 

@@ -11,8 +11,9 @@ class Details(models.Model):
     location = models.CharField(max_length=200, default='Unknown')
     date_posted = models.DateField(default=date.today)
     availability = models.BooleanField(default=True)
-
     image = models.ImageField(null=True, blank=True)
+    followers = models.ManyToManyField(User, related_name='following', blank=True)
+    followers_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

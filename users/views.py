@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate, login
 from .forms import UserRegisterForm, CustomAuthenticationForm
 from django.contrib import messages
 from .models import *
-
-
+from django.http import JsonResponse
+from .forms import CustomAuthenticationForm
 
 
 
@@ -37,9 +37,7 @@ def register_func(request):
 
 
 
-from django.contrib.auth import login
-from django.shortcuts import render, redirect
-from .forms import CustomAuthenticationForm
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -59,8 +57,43 @@ def login_view(request):
 
 def details(request, pk):
     detail = get_object_or_404(Details, pk=pk)
-    context ={"detail" : detail}
-    return render(request,'users/details.html',context)
+
+    # Fetch the current follower count
+    current_follower_count = detail.followers.count()
+
+    context = {
+        "detail": detail,
+        "current_follower_count": current_follower_count,
+    }
+
+    return render(request, 'users/details.html', context)
+
+
+
+
+def follow_barber(request, pk):
+    if request.method == 'POST':
+        barber = get_object_or_404(Details, pk=pk)
+
+        # Assuming you have a ForeignKey named 'followers' in your Details model
+        if request.user in barber.followers.all():
+            barber.followers.remove(request.user)
+            is_following = False
+        else:
+            barber.followers.add(request.user)
+            is_following = True
+
+        # Update the follower count
+        followers_count = barber.followers.count()
+
+        return JsonResponse({
+            'success': True,
+            'is_following': is_following,
+            'followers_count': followers_count,
+        })
+
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
+
 
 
 
