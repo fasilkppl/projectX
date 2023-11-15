@@ -57,12 +57,13 @@ def login_view(request):
 
 def details(request, pk):
     detail = get_object_or_404(Details, pk=pk)
-
+    slideimages = SlideImage.objects.filter(slideproduct=detail)
     # Fetch the current follower count
     current_follower_count = detail.followers.count()
 
     context = {
         "detail": detail,
+        "slideimages": slideimages,
         "current_follower_count": current_follower_count,
     }
 
@@ -101,6 +102,9 @@ def follow_barber(request, pk):
 
 def payment(request):
     return render(request,'users/payment.html')
+
+
+
 
 
 

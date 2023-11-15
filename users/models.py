@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from PIL import Image
+
 
 class Details(models.Model):
     name = models.CharField(max_length=200)
@@ -25,3 +27,24 @@ class Details(models.Model):
         except:
             url = ''
         return url
+
+
+
+class SlideImage(models.Model):
+    slideproduct = models.ForeignKey(Details, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='slide_images/')
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        # Open the uploaded image file
+        img = Image.open(self.image.path)
+
+        # Set the desired size
+        output_size = (500, 350)
+
+        # Resize the image
+        img.thumbnail(output_size)
+
+        # Save the resized image back to the same path
+        img.save(self.image.path)
