@@ -5,7 +5,7 @@ from django.contrib import messages
 from .models import *
 from django.http import JsonResponse
 from .forms import CustomAuthenticationForm
-from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -107,7 +107,7 @@ def follow_barber(request, pk):
 
 
 
-@login_required
+
 def add_review(request, pk):
     barber = get_object_or_404(Details, pk=pk)
     

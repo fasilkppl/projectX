@@ -448,18 +448,21 @@
                                         <h4 class="reviews-title">{{ review.comment }}</h4>
                                     </div>
                                 </div>
+
                             {% endfor %}
-
-                            {% else %}
-                                <p>No reviews yet.</p>
-
-                                <div class="col d-grid">
-                                    <a href="{% url 'add_review' pk=barber.id %}" class="btn btn-success btn-lg" style="width: 300px; text-align: center; margin: 0 auto;">Add Review</a>
-                                </div>
                             {% endif %}
 
-
                             </div>
+                            {% if user.is_authenticated %}
+                            <div class="col d-grid">
+                                <a href="{% url 'add_review' pk=barber.id %}" class="custom-btn btn mt-2" style="width: 300px; text-align: center; margin: 0 auto;">Add Review</a>
+                            </div>
+                            {% else %}
+                            <div class="col d-grid">
+                                <a href="{% url 'login_pg' %}" class="custom-btn btn mt-2" style="width: 300px; text-align: center; margin: 0 auto;">Login To Add a Review</a>
+                            </div>
+                            {% endif %}
+
                         </div>
 
                     </div>
