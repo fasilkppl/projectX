@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
-from .forms import UserRegisterForm, CustomAuthenticationForm
+from .forms import *
 from django.contrib import messages
 from .models import *
 from django.http import JsonResponse
 from .forms import CustomAuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -82,6 +83,7 @@ def details(request, pk):
 def follow_barber(request, pk):
     if request.method == 'POST':
         barber = get_object_or_404(Details, pk=pk)
+        
 
         # Assuming you have a ForeignKey named 'followers' in your Details model
         if request.user in barber.followers.all():
@@ -102,6 +104,25 @@ def follow_barber(request, pk):
 
     return JsonResponse({'success': False, 'error': 'Invalid request'})
 
+
+
+
+@login_required
+def add_review(request, pk):
+    barber = get_object_or_404(Details, pk=pk)
+    
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES)  # Include request.FILES to handle uploaded files
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.barber = barber
+            review.user = request.user
+            review.save()
+            return redirect('details', pk=pk)
+    else:
+        form = ReviewForm()
+
+    return render(request, 'users/add_review.html', {'form': form, 'barber': barber})
 
 
 

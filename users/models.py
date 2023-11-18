@@ -59,5 +59,6 @@ class Review(models.Model):
     rating = models.IntegerField()
     comment = models.TextField()
     review_user_image = models.ImageField(upload_to=' review_user_image/', null=True, blank=True)
+
     def __str__(self):
         return f"Review for {self.barber.name} by {self.user.username}"

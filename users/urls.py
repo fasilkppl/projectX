@@ -32,6 +32,8 @@ urlpatterns = [
     path('details/<int:pk>/', user_views.details, name='details'),
     path('payment/', user_views.payment, name='payment_pg'),
     path('follow/<int:pk>/', user_views.follow_barber, name='follow_barber'),
+    path('details/<int:pk>/add_review', user_views.add_review, name='add_review'),
+
 
 
 

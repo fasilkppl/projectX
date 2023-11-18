@@ -424,7 +424,7 @@
                             {% for review in reviews %}
                                 <div class="reviews-thumb">
                                     <div class="reviews-info d-flex align-items-center">
-                                        <img src="{{ review.review_user_image.url }}" class="avatar-image img-fluid" alt="">
+                                        <img src="{{ review.review_user_image.url }}" class="avatar-image img-fluid" alt="headshot">
 
                                         <div class="d-flex align-items-center justify-content-between flex-wrap w-100 ms-3">
                                             <p class="mb-0">
@@ -452,7 +452,10 @@
 
                             {% else %}
                                 <p>No reviews yet.</p>
-                                <p>Please add a review</p>
+
+                                <div class="col d-grid">
+                                    <a href="{% url 'add_review' pk=barber.id %}" class="btn btn-success btn-lg" style="width: 300px; text-align: center; margin: 0 auto;">Add Review</a>
+                                </div>
                             {% endif %}
 
 
