@@ -288,16 +288,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
             <section class="job-section section-padding">
                 <div class="container">
                     <div class="row align-items-center">
@@ -398,6 +388,95 @@
                     </div>
                 </div>
             </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <section class="reviews-section section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12">
+                            <h2 class="text-center mb-5">Happy customers</h2>
+
+                            <div class="owl-carousel owl-theme reviews-carousel">
+
+
+
+
+                                
+
+
+
+
+                        {% if reviews %}
+                            {% for review in reviews %}
+                                <div class="reviews-thumb">
+                                    <div class="reviews-info d-flex align-items-center">
+                                        <img src="{{ review.review_user_image.url }}" class="avatar-image img-fluid" alt="">
+
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap w-100 ms-3">
+                                            <p class="mb-0">
+                                                <strong>{{ review.user }}</strong>
+                                                <small>{{ barber.date_posted }}</small>
+                                            </p>
+
+                                            <div class="reviews-icons">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-body">
+                                        <img src="{% static 'assets/images/left-quote.png' %}" class="quote-icon img-fluid" alt="">
+
+                                        <h4 class="reviews-title">{{ review.comment }}</h4>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            {% else %}
+                                <p>No reviews yet.</p>
+                                <p>Please add a review</p>
+                            {% endif %}
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             <section class="cta-section">

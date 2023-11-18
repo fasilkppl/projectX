@@ -57,7 +57,12 @@ def login_view(request):
 
 def details(request, pk):
     detail = get_object_or_404(Details, pk=pk)
+    barber = get_object_or_404(Details, pk=pk)
+
     slideimages = SlideImage.objects.filter(slideproduct=detail)
+    reviews = Review.objects.filter(barber=barber)
+
+
     # Fetch the current follower count
     current_follower_count = detail.followers.count()
 
@@ -65,6 +70,8 @@ def details(request, pk):
         "detail": detail,
         "slideimages": slideimages,
         "current_follower_count": current_follower_count,
+        'barber': barber, 
+        'reviews': reviews,
     }
 
     return render(request, 'users/details.html', context)
