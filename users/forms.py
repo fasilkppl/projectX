@@ -83,3 +83,17 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'comment': forms.Textarea(attrs={'rows': 5}),
         }
+
+
+
+
+class LocationForm(forms.ModelForm):
+    address = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter address'}))
+    latitude = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter latitude'}))
+    longitude = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter longitude'}))
+
+    class Meta:
+        model = Location
+        fields = ['address', 'latitude', 'longitude']
+
+

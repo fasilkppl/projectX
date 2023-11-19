@@ -106,8 +106,6 @@ def follow_barber(request, pk):
 
 
 
-
-
 def add_review(request, pk):
     barber = get_object_or_404(Details, pk=pk)
     
@@ -126,10 +124,32 @@ def add_review(request, pk):
 
 
 
-
-
 def payment(request):
     return render(request,'users/payment.html')
+
+
+
+
+
+
+
+
+def update_location(request, pk):
+    barber = get_object_or_404(Details, id=pk)
+    location, created = Location.objects.get_or_create(barber=barber)
+
+    if request.method == 'POST':
+        location_form = LocationForm(request.POST, instance=location)
+        if location_form.is_valid():
+            location_form.save()
+            # Redirect to the barber's detail page or wherever appropriate
+            return redirect('location_pg', pk=barber.id)
+
+    else:
+        location_form = LocationForm(instance=location)
+
+    # Render the form in the template or handle errors if needed
+    return render(request, 'users/location.html', {'location_form': location_form,'barber': barber})
 
 
 

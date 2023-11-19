@@ -16,6 +16,8 @@ class Details(models.Model):
     image = models.ImageField(null=True, blank=True)
     followers = models.ManyToManyField(User, related_name='following', blank=True)
     followers_count = models.IntegerField(default=0)
+    contact_number = models.IntegerField(default=0)
+    email = models.EmailField(max_length=254, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -62,3 +64,18 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review for {self.barber.name} by {self.user.username}"
+    
+
+
+
+
+
+
+class Location(models.Model):
+    barber = models.OneToOneField(Details, on_delete=models.CASCADE, related_name='barber_location')
+    address = models.CharField(max_length=200)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
+
+    def __str__(self):
+        return f"Location for {self.barber.name}"
